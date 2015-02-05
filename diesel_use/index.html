@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Maranatha Partners Diesel Use Tracker</title>
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="css/responsive.css" type="text/css" media="screen">
+
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="css/font-awesome-4.1.0/css/font-awesome.min.css" type="text/css" media="screen">
+        	</head>
+	
+	<body>
+		<div id="wrap">
+		<h1>Maranatha Partners Diesel Use Tracker</h1> 
+		
+			<!-- Feedback message zone -->
+			<div id="message"></div>
+
+            <div id="toolbar">
+              <a id="showaddformbutton" class="button green"><i class="fa fa-plus"></i> Add new row</a>
+            </div>
+			<!-- Grid contents -->
+			<div id="tablecontent"></div>
+		
+			<!-- Paginator control -->
+			<div id="paginator"></div>
+		</div>  
+		
+		<script src="js/editablegrid-2.1.0-b25.js"></script>   
+		<script src="js/jquery-1.11.1.min.js" ></script>
+        <!-- EditableGrid test if jQuery UI is present. If present, a datepicker is automatically used for date type -->
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <script src="js/demo.js" ></script>
+
+		<script type="text/javascript">
+		
+            var datagrid = new DatabaseGrid();
+			window.onload = function() { 
+
+                // key typed in the filter field
+                $("#filter").keyup(function() {
+                    datagrid.editableGrid.filter( $(this).val());
+
+                    // To filter on some columns, you can set an array of column index 
+                    //datagrid.editableGrid.filter( $(this).val(), [0,3,5]);
+                  });
+
+                $("#showaddformbutton").click( function()  {
+                  showAddForm();
+                });
+                $("#cancelbutton").click( function() {
+                  showAddForm();
+                });
+
+                $("#addbutton").click(function() {
+                  datagrid.addRow();
+                });
+
+        
+			}; 
+		</script>
+
+        <!-- simple form, used to add a new row -->
+        <div id="addform">
+
+            <div class="row">
+                <input type="date" id="date" name="date" placeholder="date" />
+            </div>
+            <div class="row">
+                <input type="text" id="gallons_used" name="gallons_used" placeholder="gallons_used" />
+            </div>   
+            <div class="row">
+                <input type="text" id="person" name="person" placeholder="person" />
+            </div>     
+            <div class="row">
+                <select id="equipment" name="equipment">
+                  <option value="9560rt">9560RT</option>
+                  <option value="9460r">9460r</option>
+                  <option value="8370rt">8370RT</option>
+                  <option value="8320r">8320r</option>
+                  <option value="8310r">8310r</option>
+                  <option value="7230r">7230r</option>
+                  <option value="7130">7130</option>
+                  <option value="5101">5101</option>
+                  <option value="5045">5045</option>
+                  <option value="jd_backhoe">JD Backhoe</option>
+                  <option value="trackhoe">trackhoe</option>
+                  <option value="dozer">dozer</option>
+                  <option value="cat_backhoe">cat Backhoe</option>
+                  <option value="jcb">jcb</option>
+                </select>
+            </div>
+            <div class="row">
+                  <input id="cc" name="dept" value="aa">          
+            </div>   
+            <div class="row">
+                <input type="text" id="equipment_hours" name="equipment_hours" placeholder="equipment_hours" />
+            </div>          
+        
+              
+
+            <div class="row tright">
+              <a id="addbutton" class="button green" ><i class="fa fa-save"></i> Apply</a>
+              <a id="cancelbutton" class="button delete">Cancel</a>
+            </div>
+        </div>
+        
+	</body>
+
+</html>
